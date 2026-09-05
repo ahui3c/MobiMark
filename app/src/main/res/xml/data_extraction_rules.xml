@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="test_volume_recovery.xml" />
+        <exclude domain="sharedpref" path="test_dnd_recovery.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="test_volume_recovery.xml" />
+        <exclude domain="sharedpref" path="test_dnd_recovery.xml" />
+    </device-transfer>
+</data-extraction-rules>

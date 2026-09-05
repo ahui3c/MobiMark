@@ -1,0 +1,29 @@
+PRISM FRONT - Ahuimark Godot workload
+
+SCI-FI SuperSoldier - Game-ready (Animated), by SihaGames
+https://sketchfab.com/3d-models/sci-fi-supersoldier-game-ready-animated-09e0bd9c9715463584cd847d9b30a140
+Sci-Fi AK Rifle gameready (Free), by Egor Likhachev
+https://sketchfab.com/3d-models/sci-fi-ak-rifle-gameready-free-2d0d3410970d49c6865d00be15048f72
+PBR Game Ready RPG Launcher, by Clases3d
+https://sketchfab.com/3d-models/pbr-game-ready-rpg-launcher-2210ba16cfeb46969c713d9fc99727c2
+One-eyed Monster with animations, by Jungle Jim
+https://sketchfab.com/3d-models/one-eyed-monster-with-animations-350be2b14c01429e9cd75d0b2fe25d2b
+These four assets are licensed under CC BY 4.0:
+https://creativecommons.org/licenses/by/4.0/
+Modifications: resized/compressed textures, material adjustments, scale,
+weapon attachment, additional procedural skeletal animation and IK.
+Creators do not endorse Ahuimark.
+
+BlueDemon, Orc, Demon, Dino: Ultimate Monsters Pack by Quaternius.
+https://quaternius.com/packs/ultimatemonsters.html
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Forest Ground 04, Metasequoia Bark, Concrete Floor 01 by Poly Haven.
+https://polyhaven.com/a/forest_ground_04
+https://polyhaven.com/a/metasequoia_bark
+https://polyhaven.com/a/concrete_floor_01
+CC0 1.0: https://polyhaven.com/license
+
+Godot Engine: MIT license. See GODOT_LICENSE.txt.
+Environment layouts, procedural vegetation, combat behavior, shaders and
+synthesized audio were created for Ahuimark. No Overwatch assets are included.

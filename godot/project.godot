@@ -1,0 +1,34 @@
+config_version=5
+
+[application]
+config/name="Ahuimark — Prism Front"
+run/main_scene="res://scenes/combat.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+
+[display]
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+window/handheld/orientation=0
+
+[rendering]
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=false
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=1
+lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/positional_shadow/atlas_size=2048
+environment/defaults/default_clear_color=Color(0.35, 0.65, 0.9, 1)
+
+[physics]
+common/physics_ticks_per_second=60
+
+[audio]
+driver/enable_input=false
+
+[debug]
+gdscript/warnings/treat_warnings_as_errors=false

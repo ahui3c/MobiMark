@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MobiMark 離線瀏覽工作負載</title>
+  <style>
+    *{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:#edf3f5;color:#19303b;font:15px/1.75 system-ui,-apple-system,sans-serif}
+    header{position:sticky;top:0;z-index:20;padding:14px 18px;color:white;background:linear-gradient(110deg,#073d58,#087f86 55%,#e59a25);box-shadow:0 4px 18px #102c3b55}
+    header b{font-size:19px;letter-spacing:.04em}header small{display:block;opacity:.8}.hero{padding:34px 20px 28px;color:white;background:linear-gradient(145deg,#1bc9b7,#1476c9 55%,#7b55cf)}
+    .hero h1{margin:0 0 8px;font-size:30px}.hero p{max-width:760px;margin:0;opacity:.9}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px}
+    .metric{padding:16px;background:white;border-radius:10px;box-shadow:0 3px 12px #17374418}.metric strong{display:block;color:#087f86;font-size:22px}
+    main{max-width:920px;margin:auto;padding:8px 14px 36px}.card{margin:18px 0;padding:16px;background:white;border-radius:12px;box-shadow:0 5px 20px #1737441c;border-top:4px solid var(--accent)}
+    .card h2{margin:0 0 10px;font-size:21px}.card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;background:#b8ccd4}.card p{margin:10px 0;text-align:justify}
+    table{width:100%;margin:14px 0;border-collapse:collapse;font-size:13px}th{color:white;background:#176b7b}th,td{padding:8px;border:1px solid #cad8dc;text-align:right}th:first-child,td:first-child{text-align:left}tr:nth-child(even){background:#eef7f6}
+    .tag{display:inline-block;margin-right:6px;padding:2px 8px;color:#075665;background:#d9f5f0;border-radius:20px;font-size:11px}.progress{height:8px;background:#dce8eb;border-radius:6px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#16bda9,#f7b43b);animation:pulse 1.8s ease-in-out infinite alternate}
+    @keyframes pulse{from{width:24%}to{width:94%}}@media(max-width:520px){.summary{grid-template-columns:1fr}.hero h1{font-size:25px}}
+  </style>
+</head>
+<body>
+  <header><b>MOBIMARK OFFLINE LAB</b><small>離線內容渲染、圖片解碼、表格排版與持續捲動</small></header>
+  <section class="hero"><h1>行動裝置工作效率與續航觀測</h1><p>本頁完全封裝於應用程式，使用固定種子建立可重現的大型內容，不受外部網站速度、廣告或版面變動影響。</p></section>
+  <section class="summary"><div class="metric"><strong>54</strong>高解析模擬圖片</div><div class="metric"><strong>18</strong>大型資料表</div><div class="metric"><strong>324</strong>長文字段落</div></section>
+  <main id="content"></main>
+  <script>
+    const content=document.querySelector('#content');
+    const topics=['行動處理器效能分析','螢幕更新率與功耗觀察','影像處理工作流程','無線網路連線測試','應用程式多工研究','電池溫度與效率報告'];
+    const paragraphs=[
+      '測試團隊以一致的操作節奏整理裝置資料，從內容載入、版面計算到畫面合成逐項記錄。大量文字會反覆觸發字型塑形、換行與繪製，模擬閱讀深度文章時常見的瀏覽器負載。',
+      '資料分析同時涵蓋效能、耗電、溫度與使用體驗。每一段內容採用不同長度與標點配置，讓排版引擎持續處理複雜段落，而不是重複顯示單一簡短文字。',
+      '圖片區域包含多層漸層、透明圖形、陰影、網格與細節標記。內容由固定演算法產生，離線執行時仍會產生穩定的圖片編碼、解碼、縮放與合成工作量。',
+      '表格會比較十二組測試資料，並套用交錯底色、框線與對齊規則。長頁面捲動期間，瀏覽器需要不斷更新可視區域、光柵化圖層並回收離開畫面的繪製資源。',
+      '為維持可比較性，所有內容的數量、尺寸與生成順序固定。當頁面捲動到底部後會重新載入，重新執行文件建立、圖片生成與版面配置流程。',
+      '這套離線情境適合沒有網路或需要排除伺服器變因的續航測試；線上模式則保留真實網站的腳本、圖片與網路傳輸負載，兩者可依測試目的選擇。'
+    ];
+    function picture(index){
+      const canvas=document.createElement('canvas');canvas.width=640;canvas.height=360;
+      const c=canvas.getContext('2d');const hue=(index*47)%360;
+      const g=c.createLinearGradient(0,0,640,360);g.addColorStop(0,`hsl(${hue} 78% 48%)`);g.addColorStop(.55,`hsl(${(hue+75)%360} 72% 58%)`);g.addColorStop(1,`hsl(${(hue+160)%360} 80% 35%)`);c.fillStyle=g;c.fillRect(0,0,640,360);
+      for(let i=0;i<34;i++){const x=(index*83+i*137)%700-30,y=(index*41+i*71)%410-25,r=12+(i*17)%65;c.globalAlpha=.18+(i%5)*.1;c.fillStyle=i%2?'#fff':'#092b47';c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}
+      c.globalAlpha=.85;c.fillStyle='#fff';c.font='700 32px system-ui';c.fillText(`MOBIMARK VISUAL ${String(index+1).padStart(2,'0')}`,30,305);c.font='16px system-ui';c.fillText('OFFLINE RENDERING SAMPLE · 640 × 360',32,334);
+      return canvas.toDataURL('image/jpeg',.84);
+    }
+    function dataTable(index){let rows='';for(let r=0;r<12;r++){rows+=`<tr><td>裝置 ${String.fromCharCode(65+r)}</td><td>${72+(index*11+r*7)%128}</td><td>${28+(index+r)%17}°C</td><td>${81+(index*3+r*5)%20}%</td></tr>`}return `<table><thead><tr><th>測試項目</th><th>分數</th><th>溫度</th><th>效率</th></tr></thead><tbody>${rows}</tbody></table>`}
+    for(let i=0;i<54;i++){
+      const article=document.createElement('article');article.className='card';article.style.setProperty('--accent',`hsl(${(i*43)%360} 70% 48%)`);
+      article.innerHTML=`<span class="tag">報告 ${String(i+1).padStart(2,'0')}</span><span class="tag">離線資料</span><h2>${topics[i%topics.length]}</h2><img alt="效能分析模擬圖片 ${i+1}"><div class="text">${paragraphs.map(p=>`<p>${p}</p>`).join('')}</div>${i%3===0?dataTable(i):''}<div class="progress"><i></i></div>`;
+      article.querySelector('img').src=picture(i);content.appendChild(article);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- A recovery snapshot is valid only on the device where DND was changed. -->
+    <exclude domain="sharedpref" path="test_dnd_recovery.xml" />
+    <exclude domain="sharedpref" path="test_volume_recovery.xml" />
+</full-backup-content>

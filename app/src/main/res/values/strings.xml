@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MobiMark</string>
+    <string name="notification_channel">續航測試</string>
+    <string name="notification_running">續航測試進行中</string>
+</resources>
